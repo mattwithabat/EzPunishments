@@ -1,0 +1,91 @@
+name: EzPunishments
+version: '${project.version}'
+main: me.mattwithabat.ezPunishments.EzPunishments
+api-version: '1.21'
+description: A comprehensive punishment system for Minecraft servers
+author: mattwithabat
+
+commands:
+  ban:
+    description: Permanently ban a player
+    permission: ezpunishments.ban
+  tempban:
+    description: Temporarily ban a player
+    permission: ezpunishments.tempban
+  mute:
+    description: Permanently mute a player
+    permission: ezpunishments.mute
+  tempmute:
+    description: Temporarily mute a player
+    permission: ezpunishments.tempmute
+  ipban:
+    description: Ban a player's IP address
+    permission: ezpunishments.ipban
+  kick:
+    description: Kick a player from the server
+    permission: ezpunishments.kick
+  unban:
+    description: Unban a player
+    permission: ezpunishments.unban
+  unmute:
+    description: Unmute a player
+    permission: ezpunishments.unmute
+  unipban:
+    description: Unban an IP address
+    permission: ezpunishments.unipban
+  history:
+    description: View a player's punishment history
+    permission: ezpunishments.history
+  ezpunishments:
+    description: Main plugin command
+    aliases: [ezp, punishments]
+
+permissions:
+  ezpunishments.ban:
+    description: Allows banning players
+    default: op
+  ezpunishments.tempban:
+    description: Allows temporarily banning players
+    default: op
+  ezpunishments.mute:
+    description: Allows muting players
+    default: op
+  ezpunishments.tempmute:
+    description: Allows temporarily muting players
+    default: op
+  ezpunishments.ipban:
+    description: Allows IP banning players
+    default: op
+  ezpunishments.kick:
+    description: Allows kicking players
+    default: op
+  ezpunishments.unban:
+    description: Allows unbanning players
+    default: op
+  ezpunishments.unmute:
+    description: Allows unmuting players
+    default: op
+  ezpunishments.unipban:
+    description: Allows unbanning IP addresses
+    default: op
+  ezpunishments.history:
+    description: Allows viewing punishment history
+    default: op
+  ezpunishments.reload:
+    description: Allows reloading the plugin configuration
+    default: op
+  ezpunishments.admin:
+    description: Grants all EzPunishments permissions
+    default: op
+    children:
+      ezpunishments.ban: true
+      ezpunishments.tempban: true
+      ezpunishments.mute: true
+      ezpunishments.tempmute: true
+      ezpunishments.ipban: true
+      ezpunishments.kick: true
+      ezpunishments.unban: true
+      ezpunishments.unmute: true
+      ezpunishments.unipban: true
+      ezpunishments.history: true
+      ezpunishments.reload: true

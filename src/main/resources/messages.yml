@@ -1,0 +1,78 @@
+no-permission: "&cYou don't have permission to do that."
+player-not-found: "&cPlayer not found."
+player-not-online: "&cThat player is not online."
+player-only: "&cThis command can only be used by players."
+invalid-duration: "&cInvalid duration. Use formats like 1h, 1d, 7d, 30d."
+no-ip-found: "&cCould not find IP address for that player."
+reload-success: "&aConfiguration reloaded successfully."
+
+usage:
+  ban: "&cUsage: /ban <player> <reason>"
+  tempban: "&cUsage: /tempban <player> <duration> <reason>"
+  mute: "&cUsage: /mute <player> <reason>"
+  tempmute: "&cUsage: /tempmute <player> <duration> <reason>"
+  ipban: "&cUsage: /ipban <player> <reason>"
+  kick: "&cUsage: /kick <player> <reason>"
+  unban: "&cUsage: /unban <player>"
+  unmute: "&cUsage: /unmute <player>"
+  unipban: "&cUsage: /unipban <ip>"
+  history: "&cUsage: /history <player>"
+
+ban:
+  success: "&a{player} has been permanently banned."
+  broadcast: "&c{player} &7has been banned by &c{punisher}&7: &f{reason}"
+
+tempban:
+  success: "&a{player} has been banned for {duration}."
+  broadcast: "&c{player} &7has been banned for &e{duration} &7by &c{punisher}&7: &f{reason}"
+
+mute:
+  success: "&a{player} has been permanently muted."
+  broadcast: "&c{player} &7has been muted by &c{punisher}&7: &f{reason}"
+  target-message: "&cYou have been permanently muted. Reason: {reason}"
+
+tempmute:
+  success: "&a{player} has been muted for {duration}."
+  broadcast: "&c{player} &7has been muted for &e{duration} &7by &c{punisher}&7: &f{reason}"
+  target-message: "&cYou have been muted for {duration}. Reason: {reason}"
+
+ipban:
+  success: "&a{player}'s IP ({ip}) has been banned."
+  broadcast: "&c{player} &7has been IP banned by &c{punisher}&7: &f{reason}"
+
+kick:
+  success: "&a{player} has been kicked."
+  broadcast: "&c{player} &7has been kicked by &c{punisher}&7: &f{reason}"
+  screen: "&c&lKicked\n\n&7Reason: &f{reason}\n&7By: &f{punisher}"
+
+unban:
+  success: "&a{player} has been unbanned."
+  not-banned: "&c{player} is not banned."
+
+unmute:
+  success: "&a{player} has been unmuted."
+  not-muted: "&c{player} is not muted."
+  target-message: "&aYou have been unmuted."
+
+unipban:
+  success: "&aIP {ip} has been unbanned."
+  not-banned: "&cIP {ip} is not banned."
+
+muted-message: "&cYou are muted. Reason: &f{reason}\n&cRemaining: &f{remaining}"
+
+ban-screen:
+  - "&c&lYou are banned from this server"
+  - ""
+  - "&7Reason: &f{reason}"
+  - "&7Banned by: &f{punisher}"
+  - "&7Duration: &f{remaining}"
+  - ""
+  - "&7Appeal at: &fyourserver.com/appeal"
+
+ipban-screen:
+  - "&c&lYour IP is banned from this server"
+  - ""
+  - "&7Reason: &f{reason}"
+  - "&7Banned by: &f{punisher}"
+  - ""
+  - "&7Appeal at: &fyourserver.com/appeal"

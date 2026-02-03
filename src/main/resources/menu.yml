@@ -1,0 +1,108 @@
+history:
+  title: "&6Punishment History: {player}"
+  rows: 6
+  inactive-material: GRAY_DYE
+
+  filler:
+    material: BLACK_STAINED_GLASS_PANE
+
+  navigation:
+    previous-page:
+      slot: 48
+      material: ARROW
+      name: "&e« Previous Page"
+    next-page:
+      slot: 50
+      material: ARROW
+      name: "&eNext Page »"
+
+  items:
+    ban:
+      material: BARRIER
+      name: "&c&lBan"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Duration: &fPermanent"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
+
+    temp-ban:
+      material: CLOCK
+      name: "&c&lTemporary Ban"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Duration: &f{duration}"
+        - "&7Remaining: &f{remaining}"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
+
+    mute:
+      material: PAPER
+      name: "&6&lMute"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Duration: &fPermanent"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
+
+    temp-mute:
+      material: CLOCK
+      name: "&6&lTemporary Mute"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Duration: &f{duration}"
+        - "&7Remaining: &f{remaining}"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
+
+    ip-ban:
+      material: IRON_BARS
+      name: "&4&lIP Ban"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Duration: &fPermanent"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
+
+    kick:
+      material: LEATHER_BOOTS
+      name: "&e&lKick"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - ""
+        - "&7ID: &8{id}"
+
+    default:
+      material: PAPER
+      name: "&7{type}"
+      lore:
+        - ""
+        - "&7Punisher: &f{punisher}"
+        - "&7Reason: &f{reason}"
+        - "&7Date: &f{date}"
+        - "&7Status: {status}"
+        - ""
+        - "&7ID: &8{id}"
