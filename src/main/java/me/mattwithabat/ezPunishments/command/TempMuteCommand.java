@@ -75,7 +75,7 @@ public class TempMuteCommand implements CommandExecutor, TabCompleter {
                 true
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("tempmute.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("tempmute.broadcast", punishment);
@@ -87,7 +87,7 @@ public class TempMuteCommand implements CommandExecutor, TabCompleter {
             if (target != null) {
                 target.sendMessage(plugin.getMessageUtil().get("tempmute.target-message", punishment));
             }
-        });
+        }));
 
         return true;
     }

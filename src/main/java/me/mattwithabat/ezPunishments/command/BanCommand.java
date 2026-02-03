@@ -67,7 +67,7 @@ public class BanCommand implements CommandExecutor, TabCompleter {
                 true
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("ban.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("ban.broadcast", punishment);
@@ -76,7 +76,7 @@ public class BanCommand implements CommandExecutor, TabCompleter {
             }
 
             plugin.getPunishmentManager().kickPlayer(targetUuid, plugin.getMessageUtil().getBanMessage(punishment));
-        });
+        }));
 
         return true;
     }

@@ -43,17 +43,19 @@ public class UnbanCommand implements CommandExecutor, TabCompleter {
 
         String removerName = sender instanceof Player ? sender.getName() : "Console";
 
-        plugin.getPunishmentManager().unban(targetUuid, removerName).thenAccept(success -> {
-            if (success) {
-                String msg = plugin.getMessageUtil().get("unban.success");
-                msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
-                sender.sendMessage(msg);
-            } else {
-                String msg = plugin.getMessageUtil().get("unban.not-banned");
-                msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
-                sender.sendMessage(msg);
-            }
-        });
+        plugin.getPunishmentManager().unban(targetUuid, removerName).thenAccept(success ->
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    if (success) {
+                        String msg = plugin.getMessageUtil().get("unban.success");
+                        msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
+                        sender.sendMessage(msg);
+                    } else {
+                        String msg = plugin.getMessageUtil().get("unban.not-banned");
+                        msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
+                        sender.sendMessage(msg);
+                    }
+                })
+        );
 
         return true;
     }

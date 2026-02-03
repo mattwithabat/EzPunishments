@@ -67,14 +67,14 @@ public class KickCommand implements CommandExecutor, TabCompleter {
                 false
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("kick.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("kick.broadcast", punishment);
             if (!broadcastMsg.isEmpty()) {
                 Bukkit.broadcastMessage(broadcastMsg);
             }
-        });
+        }));
 
         String kickMessage = plugin.getMessageUtil().get("kick.screen", punishment);
         target.kickPlayer(kickMessage);

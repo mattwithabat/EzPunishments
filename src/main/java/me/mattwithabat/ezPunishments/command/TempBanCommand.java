@@ -75,7 +75,7 @@ public class TempBanCommand implements CommandExecutor, TabCompleter {
                 true
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("tempban.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("tempban.broadcast", punishment);
@@ -84,7 +84,7 @@ public class TempBanCommand implements CommandExecutor, TabCompleter {
             }
 
             plugin.getPunishmentManager().kickPlayer(targetUuid, plugin.getMessageUtil().getBanMessage(punishment));
-        });
+        }));
 
         return true;
     }

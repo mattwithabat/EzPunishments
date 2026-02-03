@@ -67,7 +67,7 @@ public class MuteCommand implements CommandExecutor, TabCompleter {
                 true
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("mute.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("mute.broadcast", punishment);
@@ -79,7 +79,7 @@ public class MuteCommand implements CommandExecutor, TabCompleter {
             if (target != null) {
                 target.sendMessage(plugin.getMessageUtil().get("mute.target-message", punishment));
             }
-        });
+        }));
 
         return true;
     }

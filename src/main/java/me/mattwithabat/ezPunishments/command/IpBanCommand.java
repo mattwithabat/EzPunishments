@@ -72,7 +72,7 @@ public class IpBanCommand implements CommandExecutor, TabCompleter {
                 true
         );
 
-        plugin.getPunishmentManager().punish(punishment).thenRun(() -> {
+        plugin.getPunishmentManager().punish(punishment).thenRun(() -> Bukkit.getScheduler().runTask(plugin, () -> {
             sender.sendMessage(plugin.getMessageUtil().get("ipban.success", punishment));
 
             String broadcastMsg = plugin.getMessageUtil().get("ipban.broadcast", punishment);
@@ -83,11 +83,11 @@ public class IpBanCommand implements CommandExecutor, TabCompleter {
             String kickMsg = plugin.getMessageUtil().getIpBanMessage(punishment);
             for (Player online : Bukkit.getOnlinePlayers()) {
                 String playerIp = PlayerUtil.getPlayerIp(online);
-                if (targetIp.equals(playerIp)) {
+                if (playerIp != null && targetIp.equals(playerIp)) {
                     online.kickPlayer(kickMsg);
                 }
             }
-        });
+        }));
 
         return true;
     }

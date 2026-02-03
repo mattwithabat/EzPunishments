@@ -43,22 +43,24 @@ public class UnmuteCommand implements CommandExecutor, TabCompleter {
 
         String removerName = sender instanceof Player ? sender.getName() : "Console";
 
-        plugin.getPunishmentManager().unmute(targetUuid, removerName).thenAccept(success -> {
-            if (success) {
-                String msg = plugin.getMessageUtil().get("unmute.success");
-                msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
-                sender.sendMessage(msg);
+        plugin.getPunishmentManager().unmute(targetUuid, removerName).thenAccept(success ->
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    if (success) {
+                        String msg = plugin.getMessageUtil().get("unmute.success");
+                        msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
+                        sender.sendMessage(msg);
 
-                Player target = Bukkit.getPlayer(targetUuid);
-                if (target != null) {
-                    target.sendMessage(plugin.getMessageUtil().get("unmute.target-message"));
-                }
-            } else {
-                String msg = plugin.getMessageUtil().get("unmute.not-muted");
-                msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
-                sender.sendMessage(msg);
-            }
-        });
+                        Player target = Bukkit.getPlayer(targetUuid);
+                        if (target != null) {
+                            target.sendMessage(plugin.getMessageUtil().get("unmute.target-message"));
+                        }
+                    } else {
+                        String msg = plugin.getMessageUtil().get("unmute.not-muted");
+                        msg = plugin.getMessageUtil().replace(msg, "{player}", targetName);
+                        sender.sendMessage(msg);
+                    }
+                })
+        );
 
         return true;
     }

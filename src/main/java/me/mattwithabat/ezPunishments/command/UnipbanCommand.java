@@ -33,17 +33,19 @@ public class UnipbanCommand implements CommandExecutor, TabCompleter {
         String ip = args[0];
         String removerName = sender instanceof Player ? sender.getName() : "Console";
 
-        plugin.getPunishmentManager().unipban(ip, removerName).thenAccept(success -> {
-            if (success) {
-                String msg = plugin.getMessageUtil().get("unipban.success");
-                msg = plugin.getMessageUtil().replace(msg, "{ip}", ip);
-                sender.sendMessage(msg);
-            } else {
-                String msg = plugin.getMessageUtil().get("unipban.not-banned");
-                msg = plugin.getMessageUtil().replace(msg, "{ip}", ip);
-                sender.sendMessage(msg);
-            }
-        });
+        plugin.getPunishmentManager().unipban(ip, removerName).thenAccept(success ->
+                org.bukkit.Bukkit.getScheduler().runTask(plugin, () -> {
+                    if (success) {
+                        String msg = plugin.getMessageUtil().get("unipban.success");
+                        msg = plugin.getMessageUtil().replace(msg, "{ip}", ip);
+                        sender.sendMessage(msg);
+                    } else {
+                        String msg = plugin.getMessageUtil().get("unipban.not-banned");
+                        msg = plugin.getMessageUtil().replace(msg, "{ip}", ip);
+                        sender.sendMessage(msg);
+                    }
+                })
+        );
 
         return true;
     }
